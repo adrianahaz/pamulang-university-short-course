@@ -1,5 +1,5 @@
 import { task, type HardhatUserConfig } from 'hardhat/config';
-import { USER_PRIVATE_KEY } from './helpers/constants/deployment';
+import { USER_PRIVATE_KEY, SNOWTRACE_API_KEY } from './helpers/constants/deployment';
 import '@nomicfoundation/hardhat-toolbox-viem';
 
 const config: HardhatUserConfig = {
@@ -21,9 +21,19 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
-    // apiKey: ETHERSCANAPI,
+    apiKey: {
+      avalancheFujiTestnet: SNOWTRACE_API_KEY,
+    },
+    customChains: [
+      {
+        network: 'avalancheFujiTestnet',
+        chainId: 43113,
+        urls: {
+          apiURL: 'https://api-testnet.snowtrace.io/api',
+          browserURL: 'https://testnet.snowtrace.io',
+        },
+      },
+    ],
   },
   sourcify: {
     // Disabled by default
