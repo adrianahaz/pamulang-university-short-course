@@ -1,4 +1,4 @@
-import { network, viem } from 'hardhat';
+import { viem } from 'hardhat';
 import { parseAbiItem } from 'viem';
 import Artifact from '../artifacts/contracts/SimpleStorage.sol/SimpleStorage.json';
 import * as fs from 'fs';
